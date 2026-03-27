@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sistema</title>
+<style>
+body {
+    background: black;
+    color: #00ff00;
+    font-family: monospace;
+    padding: 20px;
+}
+#barra {
+    width: 0%;
+    height: 20px;
+    background: lime;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Inicializando sistema...</h2>
+<div id="texto"></div>
+
+<div style="width:100%; background:#222; margin-top:20px;">
+    <div id="barra"></div>
+</div>
+
+<script>
+let mensajes = [
+"Conectando a servidor...",
+"Saltando firewall...",
+"Inyectando paquetes...",
+"Acceso a tu sistema de datos concedido",
+"Extrayendo información...",
+"Acceso completo obtenido",
+"⚠️ ALERTA ⚠️",
+"Mario Solis está hackeando tus datos..."
+];
+
+let i = 0;
+function escribir() {
+    if (i < mensajes.length) {
+        document.getElementById("texto").innerHTML += mensajes[i] + "<br>";
+        i++;
+        setTimeout(escribir, 1000);
+    } else {
+        cargar();
+    }
+}
+
+function cargar() {
+    let barra = document.getElementById("barra");
+    let ancho = 0;
+    let intervalo = setInterval(() => {
+        if (ancho >= 100) {
+            clearInterval(intervalo);
+            document.body.innerHTML += "<h1 style='color:red;'>💀 SISTEMA COMPROMETIDO 💀</h1>";
+            document.body.innerHTML += "<img src='https://i.imgur.com/8QfQK8Q.png' width='200'>";
+        } else {
+            ancho++;
+            barra.style.width = ancho + "%";
+        }
+    }, 30);
+}
+
+escribir();
+</script>
+
+</body>
+</html>
